@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
    
-def visualization(ori_data, generated_data, analysis):
+def visualization(ori_data, generated_data, analysis,data_name):
   """Using PCA or tSNE for generated and original data visualization.
   
   Args:
@@ -69,7 +69,8 @@ def visualization(ori_data, generated_data, analysis):
     plt.title('PCA plot')
     plt.xlabel('x-pca')
     plt.ylabel('y_pca')
-    plt.show()
+    plt.savefig('./{}_pca.png'.format(data_name))
+    # plt.show()
     
   elif analysis == 'tsne':
     
@@ -93,4 +94,5 @@ def visualization(ori_data, generated_data, analysis):
     plt.title('t-SNE plot')
     plt.xlabel('x-tsne')
     plt.ylabel('y_tsne')
-    plt.show()
+    plt.savefig('./{}_tsne.png'.format(data_name))
+    # plt.show()

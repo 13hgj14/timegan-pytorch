@@ -7,7 +7,6 @@ import pickle
 import random
 import shutil
 import time
-
 # 3rd-Party Modules
 import numpy as np
 import torch
@@ -41,13 +40,13 @@ def main(args):
     data_file_name = os.path.basename(data_path)
 
     ## Output directories
-    args.model_path = os.path.abspath(f"./output/{args.exp}/")
+    args.model_path = os.path.abspath(f"../output/timegan/stock/{args.exp}/")
     out_dir = os.path.abspath(args.model_path)
     if not os.path.exists(out_dir):
         os.makedirs(out_dir, exist_ok=True)
     
     # TensorBoard directory
-    tensorboard_path = os.path.abspath("./tensorboard")
+    tensorboard_path = os.path.abspath("../tensorboard")
     if not os.path.exists(tensorboard_path):
         os.makedirs(tensorboard_path, exist_ok=True)
 
@@ -60,6 +59,8 @@ def main(args):
     # Initialize random seed and CUDA
     ##############################################
 
+
+    #确定随机种子，使得每次参数初始化都相同，保证训练结果大体一致
     os.environ['PYTHONHASHSEED'] = str(args.seed)
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -67,7 +68,7 @@ def main(args):
 
     if args.device == "cuda" and torch.cuda.is_available():
         print("Using CUDA\n")
-        args.device = torch.device("cuda:0")
+        args.device = torch.device("cuda:7")
         # torch.cuda.manual_seed_all(args.seed)
         torch.cuda.manual_seed(args.seed)
         torch.backends.cudnn.deterministic = True

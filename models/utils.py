@@ -10,7 +10,6 @@ from tqdm import tqdm, trange
 
 import torch
 from torch.utils.tensorboard import SummaryWriter
-
 # Self-written modules
 from models.dataset import TimeGANDataset
 
